@@ -1,0 +1,4 @@
+* director is the redhat tripleO
+* WHAT DO YOU WANT
+* modify yaml files but the HOT(heat template)
+* deploy.sh

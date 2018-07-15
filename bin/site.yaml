@@ -1,0 +1,40 @@
+---
+- name: go
+  hosts: c01
+  tasks:
+    - name: pkg removal
+      yum: name={{item}} state=absent
+      with_items:
+        - chronyd
+
+    - name: pkg install
+      yum: name={{item}} state=present
+      with_items:
+        - ntp
+        - ntpdate
+        - emacs-nox
+        - vim
+        - git
+        - lynx
+
+    - name: enable ntp
+      service: name=ntpd enabled=yes state=started
+      register: ntp
+
+    - name: commanding
+      command: uptime
+      register: uptime
+
+    - name: shelling
+      shell: hostname > /tmp/hostname.out
+
+    - name: fetching
+      fetch: src=/tmp/hostname.out dest=collection flat=yes
+
+    - name: copying
+      copy: src=files/foo dest=/tmp/foo
+
+    ### using template
+    ### register
+    ### debug
+    ### fetch

@@ -1,0 +1,7 @@
+- name: pkg
+  yum: name={{ item }} state=present
+  with_items:
+    - emacs-nox
+    - git
+    - python-ethtool
+    

@@ -1,4 +1,0 @@
----
-- name: foo
-  template: src=foo.out.j2 dest=/tmp/foo.out
-  

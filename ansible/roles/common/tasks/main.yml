@@ -1,27 +1,9 @@
 ---
-- include: foo.yml
-- include: pkg.yml
-
 - name: stop and mask firewall
   systemd:
     name: firewalld
     state: stopped
     masked: yes
-
-- name: load modules at boot
-  copy:
-    src: openstack-ansible.conf
-    dest: /etc/modules-load.d/openstack-ansible.conf
-    owner: root
-    group: root
-    mode: 0644
-
-- name: lower kernel logging level
-  lineinfile:
-    line: "kernel.printk='4 1 7 4'"
-    insertafter: EOF
-    path: /etc/sysctl.conf
-    state: present
 
 - name: disable NetworkManager
   systemd:
@@ -30,3 +12,19 @@
     masked: yes
   ignore_errors: true
 
+- name: set timezone to Asia/Seoul
+  timezone:
+    name: Asia/Seoul
+
+- name: pkg update
+  yum:
+    name: '*'
+    state: latest
+
+- name: pkg essential
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - lynx
+    - wget

@@ -2,6 +2,13 @@
 - name: common stuff
   hosts: all
   remote_user: root
-
+  gather_facts: no
   roles:
     - common
+
+- name: openstack stuff
+  hosts: openstack
+  remote_user: root
+  gather_facts: no
+  roles:
+    - openstack

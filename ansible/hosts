@@ -1,4 +1,14 @@
-[openstack]
-compute
+[control]
 control
+
+[compute]
+compute
+
+[storage]
 storage
+
+[openstack:children]
+control
+compute
+storage
+

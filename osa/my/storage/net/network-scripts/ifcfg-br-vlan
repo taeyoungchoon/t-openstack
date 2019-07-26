@@ -1,0 +1,4 @@
+BOOTPROTO=none
+ONBOOT=yes
+DEVICE=br-vlan
+TYPE=Bridge

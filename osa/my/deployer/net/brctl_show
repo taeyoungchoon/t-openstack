@@ -1,0 +1,5 @@
+bridge name	bridge id		STP enabled	interfaces
+br-mgmt		8000.080027293a90	no		eth2
+br-storage		8000.080027ebe22f	no		eth3
+br-vlan		8000.08002751f1cb	no		eth5
+br-vxlan		8000.080027b82dbe	no		eth4

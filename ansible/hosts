@@ -3,3 +3,8 @@ s001
 s002
 s003
 s004
+
+[openstack]
+control
+compute
+storage

@@ -1,0 +1,15 @@
+---
+- name: lower kernel logging level
+  lineinfile:
+    line: "kernel.printk='4 1 7 4'"
+    insertafter: EOF
+    path: /etc/sysctl.conf
+    state: present
+
+- name: load modules at boot
+  copy:
+    src: openstack-ansible.conf
+    dest: /etc/modules-load.d/openstack-ansible.conf
+    owner: root
+    group: root
+    mode: 0644

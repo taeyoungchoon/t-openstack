@@ -57,3 +57,26 @@
     state: present
     create: yes
 
+- name: disable NetworkManager
+  systemd:
+    name: NetworkManager
+    state: stopped
+    masked: yes
+  ignore_errors: true
+
+- name: set timezone to Asia/Seoul
+  timezone:
+    name: Asia/Seoul
+
+- name: pkg update
+  yum:
+    name: '*'
+    state: latest
+
+- name: pkg essential
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - lynx
+    - wget

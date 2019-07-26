@@ -1,0 +1,6 @@
+BOOTPROTO=none
+ONBOOT=yes
+DEVICE=br-vxlan
+TYPE=Bridge
+IPADDR=172.29.240.3
+PREFIX=22

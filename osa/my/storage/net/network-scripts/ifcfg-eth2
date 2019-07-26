@@ -1,0 +1,6 @@
+NM_CONTROLLED=no
+TYPE=Ethernet
+BOOTPROTO=none
+ONBOOT=yes
+DEVICE=eth2
+BRIDGE=br-mgmt

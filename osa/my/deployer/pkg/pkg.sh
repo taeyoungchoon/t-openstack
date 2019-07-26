@@ -1,1 +1,1 @@
-yum insatll python-ethtool bridge-utils net-tools
+yum install python-ethtool bridge-utils net-tools psmisc tcpdump emacs-nox vim

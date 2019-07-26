@@ -1,0 +1,59 @@
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  selinux:
+    policy: targeted
+    state: permissive
+
+- name: ensure a list of packages installed
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - vim
+      - git
+      - python-devel
+      - bash-completion
+      - emacs-nox
+      - chrony
+      - lsof
+      - '@Development Tools'
+      - sudo
+      - lvm2
+      - openssh-server
+      - tcpdump
+      - python
+
+- name: stop and mask firewall
+  systemd:
+    name: firewalld
+    state: stopped
+    masked: yes
+
+- name: set time right using chrony
+  systemd:
+    name: chronyd
+    enabled: yes
+    state: started
+
+- name: lower kernel logging level
+  lineinfile:
+    line: "kernel.printk='4 1 7 4'"
+    insertafter: EOF
+    path: /etc/sysctl.conf
+    state: present
+
+- name: vlan and bonding support to kernel module
+  lineinfile:
+    line: "bonding"
+    insertafter: EOF
+    path: /etc/modules-load.d/openstack-ansible.conf
+    state: present
+    create: yes
+
+- name: vlan and bonding support to kernel module
+  lineinfile:
+    line: "8021q"
+    insertafter: EOF
+    path: /etc/modules-load.d/openstack-ansible.conf
+    state: present
+    create: yes
+

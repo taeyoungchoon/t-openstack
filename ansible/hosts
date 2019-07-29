@@ -1,10 +1,10 @@
-[servers]
-s001
-s002
-s003
-s004
-
 [openstack]
+deployer
+control
+compute
+storage
+
+[target]
 control
 compute
 storage

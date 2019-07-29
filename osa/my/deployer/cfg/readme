@@ -1,0 +1,5 @@
+[root@deployer openstack_deploy]# pwd
+/etc/openstack_deploy
+
+[root@deployer openstack_deploy]# diff openstack_user_config.yml.test.example openstack_user_config.yml
+[root@deployer openstack_deploy]# diff user_variables.yml.test.example user_variables.yml

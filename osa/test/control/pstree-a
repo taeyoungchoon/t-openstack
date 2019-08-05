@@ -1,0 +1,524 @@
+systemd --switched-root --system --deserialize 22
+  |-NetworkManager --no-daemon
+  |   `-2*[{NetworkManager}]
+  |-agetty --noclear tty1 linux
+  |-auditd
+  |   `-{auditd}
+  |-chronyd
+  |-crond -n
+  |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |   `-{dbus-daemon}
+  |-dnsmasq  --user=lxc-dnsmasq --pid-file=/run/lxc/dnsmasq.pid --conf-file= --listen-address=10.0.3.1 ...
+  |-haproxy-systemd -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid
+  |   `-haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+  |       `-haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+  |-irqbalance --foreground
+  |-lvmetad -f
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H ...
+  |       |-mysqld --wsrep-new-cluster --wsrep_start_position=00000000-0000-0000-0000-000000000000:-1
+  |       |   `-176*[{mysqld}]
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       |-systemd-logind
+  |       `-xinetd -stayalive -pidfile /var/run/xinetd.pid
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-apt-cacher-ng -c /etc/apt-cacher-ng pidfile=/var/run/apt-cacher-ng/pid SocketPath=/var/run/apt-cacher-ng/socket...
+  |       |   `-7*[{apt-cacher-ng}]
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H ...
+  |       |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   `-nginx
+  |       |-pypi-server /openstack/venvs/pypiserver-1.2.0/bin/pypi-server -i localhost -p 8280 --log-file/var/
+  |       |   `-227*[{pypi-server}]
+  |       |-rsync --daemon --no-detach
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       `-systemd-logind
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H...
+  |       |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   |-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |   `-heat-engine /openstack/venvs/heat-17.1.13.dev3/bin/heat-engine--log-file=/var/log/heat/heat-engin
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       |-systemd-logind
+  |       |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       |   `-uwsgi --ini /etc/uwsgi/heat-api.ini --logto /var/log/heat/heat-api.log
+  |       `-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           |-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |           `-uwsgi --ini /etc/uwsgi/heat-api-cfn.ini --logto /var/log/heat/heat-api-cfn.log
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-cinder-schedule /openstack/venvs/cinder-17.1.13.dev3/bin/cinder-scheduler--log-file=/var/log/cinder
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H...
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       |-systemd-logind
+  |       `-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           |-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |           `-uwsgi --ini /etc/uwsgi/cinder-api.ini --logto /var/log/cinder/cinder-api.log
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-beam.smp -W w -A 128 -P 1048576 -K true -- -root /usr/lib64/erlang -progname erl -- -home/var/li
+  |       |   |-erl_child_setup 65536
+  |       |   |   `-inet_gethost 4
+  |       |   |       `-inet_gethost 4
+  |       |   `-155*[{beam.smp}]
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H...
+  |       |-epmd -daemon
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       `-systemd-logind
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H ...
+  |       |-httpd -DFOREGROUND
+  |       |   |-httpd -DFOREGROUND
+  |       |   |-httpd -DFOREGROUND
+  |       |   |-httpd -DFOREGROUND
+  |       |   |-httpd -DFOREGROUND
+  |       |   |-httpd -DFOREGROUND
+  |       |   |-httpd -DFOREGROUND
+  |       |   |-httpd -DFOREGROUND
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   |-httpd -DFOREGROUND
+  |       |   |   `-19*[{httpd}]
+  |       |   `-httpd -DFOREGROUND
+  |       |       `-19*[{httpd}]
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       `-systemd-logind
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H...
+  |       |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   |-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |   `-nova-conductor /openstack/venvs/nova-17.1.13.dev3/bin/nova-conductor--log-file=/var/log/nova/nova-co
+  |       |-nova-consoleaut /openstack/venvs/nova-17.1.13.dev3/bin/nova-consoleauth--log-file=/var/log/nova/nova-
+  |       |-nova-scheduler /openstack/venvs/nova-17.1.13.dev3/bin/nova-scheduler--log-file=/var/log/nova/nova-sc
+  |       |-nova-spicehtml5 /openstack/venvs/nova-17.1.13.dev3/bin/nova-spicehtml5proxy--log-file=/var/log/nova/n
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       |-systemd-logind
+  |       |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |   `-uwsgi --ini /etc/uwsgi/nova-placement-api.ini --logto /var/log/nova/nova-placement-api.log
+  |       |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   |-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       |   `-uwsgi --ini /etc/uwsgi/nova-api-os-compute.ini --logto /var/log/nova/nova-api-os-compute.log
+  |       `-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           |-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |           `-uwsgi --ini /etc/uwsgi/nova-api-metadata.ini --logto /var/log/nova/nova-api-metadata.log
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H...
+  |       |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   |-nginx
+  |       |   `-nginx
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       |-systemd-logind
+  |       |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   |-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       |   `-uwsgi --ini /etc/uwsgi/keystone-wsgi-public.ini --logto/var/log/keystone/keystone-wsgi-p
+  |       `-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           |-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |           `-uwsgi --ini /etc/uwsgi/keystone-wsgi-admin.ini --logto/var/log/keystone/keystone-wsgi-ad
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H...
+  |       |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   |-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |   `-neutron-server /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-server --config-file/etc/neutron
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       `-systemd-logind
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H ...
+  |       |-rsyslogd -n
+  |       |   `-2*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       `-systemd-logind
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H ...
+  |       |-rsyslogd -n
+  |       |   `-4*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       |-systemd-logind
+  |       `-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           |-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |           `-uwsgi --ini /etc/uwsgi/glance-api.ini --logto /var/log/glance/glance-api.log
+  |-lxc-start
+  |   `-systemd
+  |       |-agetty --noclear --keep-baud pts/2 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/3 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/1 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud pts/0 115200,38400,9600 vt220
+  |       |-agetty --noclear --keep-baud console 115200,38400,9600 vt220
+  |       |-crond -n
+  |       |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |       |-dhclient -1 -q -lf /var/lib/dhclient/dhclient--eth0.lease -pf /var/run/dhclient-eth0.pid -H...
+  |       |-memcached -p 11211 -u memcached -m 8192 -c 4096 -l 10.74.41.68 -t 4 -v
+  |       |   `-9*[{memcached}]
+  |       |-rsyslogd -n
+  |       |   `-3*[{rsyslogd}]
+  |       |-sshd -D
+  |       |-systemd-journal
+  |       `-systemd-logind
+  |-master -w
+  |   |-pickup -l -t unix -u
+  |   `-qmgr -l -t unix -u
+  |-neutron-dhcp-ag /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-dhcp-agent --config-file/etc/neu
+  |-neutron-l3-agen /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-l3-agent --config-file/etc/neutr
+  |-neutron-linuxbr /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-linuxbridge-agent --config-file/
+  |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   |-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |   `-neutron-metadat /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metadata-agent --config-file/etc
+  |-neutron-meterin /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-metering-agent --config-file/etc
+  |-polkitd --no-debug
+  |   `-6*[{polkitd}]
+  |-privsep-helper /openstack/venvs/neutron-17.1.13.dev3/bin/privsep-helper --config-file/etc/neutron
+  |-rsyslogd -n
+  |   `-5*[{rsyslogd}]
+  |-sshd -D
+  |   `-sshd   
+  |       `-sshd    
+  |           `-bash
+  |               `-sudo -i
+  |                   `-bash
+  |                       `-pstree -a
+  |-systemd-journal
+  |-systemd-logind
+  |-systemd-udevd
+  `-tuned -Es /usr/sbin/tuned -l -P
+      `-4*[{tuned}]

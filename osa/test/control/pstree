@@ -1,0 +1,146 @@
+systemd-+-NetworkManager---2*[{NetworkManager}]
+        |-agetty
+        |-auditd---{auditd}
+        |-chronyd
+        |-crond
+        |-dbus-daemon---{dbus-daemon}
+        |-dnsmasq
+        |-haproxy-systemd---haproxy---haproxy
+        |-irqbalance
+        |-lvmetad
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-mysqld---176*[{mysqld}]
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     |-systemd-logind
+        |                     `-xinetd
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-apt-cacher-ng---7*[{apt-cacher-ng}]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-nginx---12*[nginx]
+        |                     |-pypi-server---227*[{pypi-server}]
+        |                     |-rsync
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     `-systemd-logind
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-heat-engine---12*[heat-engine]
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     |-systemd-logind
+        |                     `-2*[uwsgi---16*[uwsgi]]
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-cinder-schedule
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     |-systemd-logind
+        |                     `-uwsgi---17*[uwsgi]
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-beam.smp-+-erl_child_setup---inet_gethost---inet_gethost
+        |                     |          `-155*[{beam.smp}]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-epmd
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     `-systemd-logind
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-httpd-+-7*[httpd]
+        |                     |       `-12*[httpd---19*[{httpd}]]
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     `-systemd-logind
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-nova-conductor---12*[nova-conductor]
+        |                     |-nova-consoleaut
+        |                     |-nova-scheduler
+        |                     |-nova-spicehtml5
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     |-systemd-logind
+        |                     `-3*[uwsgi---17*[uwsgi]]
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-nginx---24*[nginx]
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     |-systemd-logind
+        |                     `-2*[uwsgi---17*[uwsgi]]
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-neutron-server---15*[neutron-server]
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     `-systemd-logind
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-rsyslogd---2*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     `-systemd-logind
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-rsyslogd---4*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     |-systemd-logind
+        |                     `-uwsgi---16*[uwsgi]
+        |-lxc-start---systemd-+-5*[agetty]
+        |                     |-crond
+        |                     |-dbus-daemon
+        |                     |-dhclient
+        |                     |-memcached---9*[{memcached}]
+        |                     |-rsyslogd---3*[{rsyslogd}]
+        |                     |-sshd
+        |                     |-systemd-journal
+        |                     `-systemd-logind
+        |-master-+-pickup
+        |        `-qmgr
+        |-neutron-dhcp-ag
+        |-neutron-l3-agen
+        |-neutron-linuxbr
+        |-neutron-metadat---12*[neutron-metadat]
+        |-neutron-meterin
+        |-polkitd---6*[{polkitd}]
+        |-privsep-helper
+        |-rsyslogd---5*[{rsyslogd}]
+        |-sshd---sshd---sshd---bash---sudo---bash---pstree
+        |-systemd-journal
+        |-systemd-logind
+        |-systemd-udevd
+        `-tuned---4*[{tuned}]

@@ -1,0 +1,7 @@
+TYPE=Ethernet
+BOOTPROTO=none
+NAME=enp3s0f1
+DEVICE=enp3s0f1
+ONBOOT=yes
+SLAVE=yes
+MASTER=bonds0

@@ -1,0 +1,8 @@
+DEVICE=br-storage
+TYPE=Bridge
+ONBOOT=yes
+BOOTPROTO=none
+DELAY=
+IPADDR="10.74.42.102"
+PREFIX="24"
+

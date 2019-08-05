@@ -1,0 +1,12 @@
+TYPE="Ethernet"
+PROXY_METHOD="none"
+BROWSER_ONLY="no"
+BOOTPROTO="none"
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="no"
+NAME="enp3s0f1"
+DEVICE="enp3s0f1"
+ONBOOT="yes"
+IPV6_PRIVACY="no"
+SLAVE=yes
+MASTER=bonds0

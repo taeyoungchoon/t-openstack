@@ -1,0 +1,21 @@
+systemd-+-NetworkManager---2*[{NetworkManager}]
+        |-agetty
+        |-auditd---{auditd}
+        |-chronyd
+        |-crond
+        |-dbus-daemon---{dbus-daemon}
+        |-irqbalance
+        |-libvirtd---16*[{libvirtd}]
+        |-lvmetad
+        |-master-+-pickup
+        |        `-qmgr
+        |-neutron-linuxbr
+        |-nova-compute---21*[{nova-compute}]
+        |-polkitd---6*[{polkitd}]
+        |-rsyslogd---5*[{rsyslogd}]
+        |-sshd---sshd---sshd---bash---sudo---bash---pstree
+        |-systemd-journal
+        |-systemd-logind
+        |-systemd-machine
+        |-systemd-udevd
+        `-tuned---4*[{tuned}]

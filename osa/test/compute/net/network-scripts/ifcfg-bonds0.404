@@ -1,0 +1,6 @@
+DEVICE=bonds0.404
+ONBOOT=yes
+USERCTL=no
+BOOTPROTO=none
+BRIDGE=br-vxlan
+VLAN=yes

@@ -1,0 +1,37 @@
+systemd --switched-root --system --deserialize 22
+  |-NetworkManager --no-daemon
+  |   `-2*[{NetworkManager}]
+  |-agetty --noclear tty1 linux
+  |-auditd
+  |   `-{auditd}
+  |-chronyd
+  |-crond -n
+  |-dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  |   `-{dbus-daemon}
+  |-irqbalance --foreground
+  |-libvirtd
+  |   `-16*[{libvirtd}]
+  |-lvmetad -f
+  |-master -w
+  |   |-pickup -l -t unix -u
+  |   `-qmgr -l -t unix -u
+  |-neutron-linuxbr /openstack/venvs/neutron-17.1.13.dev3/bin/neutron-linuxbridge-agent --config-file/
+  |-nova-compute /openstack/venvs/nova-17.1.13.dev3/bin/nova-compute--log-file=/var/log/nova/nova-comp
+  |   `-21*[{nova-compute}]
+  |-polkitd --no-debug
+  |   `-6*[{polkitd}]
+  |-rsyslogd -n
+  |   `-5*[{rsyslogd}]
+  |-sshd -D
+  |   `-sshd   
+  |       `-sshd    
+  |           `-bash
+  |               `-sudo -i
+  |                   `-bash
+  |                       `-pstree -a
+  |-systemd-journal
+  |-systemd-logind
+  |-systemd-machine
+  |-systemd-udevd
+  `-tuned -Es /usr/sbin/tuned -l -P
+      `-4*[{tuned}]

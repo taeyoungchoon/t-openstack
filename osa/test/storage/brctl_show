@@ -1,0 +1,3 @@
+bridge name	bridge id		STP enabled	interfaces
+br-mgmt		8000.10604b9ca2a4	no		bondm1
+br-storage		8000.10604b9ca2b8	no		bonds0.402

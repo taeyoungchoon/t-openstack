@@ -1,0 +1,6 @@
+default via 10.74.41.1 dev br-mgmt proto static metric 427 
+10.0.3.0/24 dev lxcbr0 proto kernel scope link src 10.0.3.1 metric 429 
+10.74.41.0/24 dev br-mgmt proto kernel scope link src 10.74.41.102 metric 427 
+10.74.41.0/24 dev br-mgmt proto kernel scope link src 10.74.41.100 metric 427 
+10.74.42.0/24 dev br-storage proto kernel scope link src 10.74.42.102 metric 425 
+10.74.44.0/24 dev br-vxlan proto kernel scope link src 10.74.44.102 metric 426 

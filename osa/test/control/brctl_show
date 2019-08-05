@@ -1,0 +1,31 @@
+bridge name	bridge id		STP enabled	interfaces
+br-mgmt		8000.10604b9c82ec	no		05233dcf_eth1
+							32f434e6_eth1
+							48a334b7_eth1
+							54397fdd_eth1
+							5442a032_eth1
+							6d08a42a_eth1
+							79a49546_eth1
+							807ea6f0_eth1
+							8eb6920d_eth1
+							b3921cbc_eth1
+							bondm1
+							c09133bf_eth1
+							e70c7f5c_eth1
+br-storage		8000.10604b9c82cc	no		48a334b7_eth2
+							bonds1.402
+							c09133bf_eth2
+br-vlan		8000.10604b9c82ee	no		bonds0
+br-vxlan		8000.10604b9c82ee	no		bonds0.404
+lxcbr0		8000.fe0bc4032876	no		05233dcf_eth0
+							32f434e6_eth0
+							48a334b7_eth0
+							54397fdd_eth0
+							5442a032_eth0
+							6d08a42a_eth0
+							79a49546_eth0
+							807ea6f0_eth0
+							8eb6920d_eth0
+							b3921cbc_eth0
+							c09133bf_eth0
+							e70c7f5c_eth0

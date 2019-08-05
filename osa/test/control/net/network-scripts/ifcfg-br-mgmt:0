@@ -1,6 +1,0 @@
-DEVICE=br-mgmt:0
-ONBOOT=yes
-BOOTPROTO=static
-DELAY=
-IPADDR="10.74.41.100"
-PREFIX="24"
